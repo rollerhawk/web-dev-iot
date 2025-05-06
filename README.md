@@ -10,11 +10,12 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 1. [Projektübersicht](#projektübersicht)
 2. [Mockup](#mockup)
-3. [Funktionsanforderungen](#funktionsanforderungen)
-4. [Nicht-funktionale Anforderungen](#nicht-funktionale-anforderungen)
-5. [Technologie-Stack](#technologie-stack)
-6. [Ausblick & Erweiterungen](#ausblick--erweiterungen)
-7. [Nächste Schritte](#nächste-schritte)
+3. [Roadmap](#roadmap)
+4. [Funktionsanforderungen](#funktionsanforderungen)
+5. [Nicht-funktionale Anforderungen](#nicht-funktionale-anforderungen)
+6. [Technologie-Stack](#technologie-stack)
+7. [Ausblick & Erweiterungen](#ausblick--erweiterungen)
+8. [Nächste Schritte](#nächste-schritte)
 
 ## Projektübersicht
 
@@ -38,6 +39,9 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 ## Mockup
 ![image](https://github.com/user-attachments/assets/f4c8d498-bbd4-4398-b491-5efd319c05ef)
+
+## Roadmap
+![image](https://github.com/user-attachments/assets/ec260d5a-2bca-4f29-a69c-bc4e1bb09040)
 
 ## Funktionsanforderungen
 
