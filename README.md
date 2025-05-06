@@ -1,6 +1,6 @@
 # Mini-IoT-Portal
 
-[![Projektstatus](https://img.shields.io/badge/status-in%20Entwicklung-yellow)](https://github.com/dein-nutzername/mini-iot-portal) [![Lizenz](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
+[![Projektstatus](https://img.shields.io/badge/status-in%20Entwicklung-yellow)](https://github.com/dein-nutzername/mini-iot-portal)
 
 ## Projektvision
 
