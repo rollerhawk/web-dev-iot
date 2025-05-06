@@ -51,8 +51,8 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 3. **Datenanzeige**
 
    * Sortierbare HTML-Tabelle aller Sensordaten
-     ### Mockup
-     ![image](https://github.com/user-attachments/assets/f4c8d498-bbd4-4398-b491-5efd319c05ef)
+   ### Mockup
+   ![image](https://github.com/user-attachments/assets/f4c8d498-bbd4-4398-b491-5efd319c05ef)
 
 4. **AJAX-Live-Suche**
 
