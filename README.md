@@ -14,7 +14,6 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 4. [Technologie-Stack](#technologie-stack)
 5. [Ausblick & Erweiterungen](#ausblick--erweiterungen)
 6. [Nächste Schritte](#nächste-schritte)
-7. [Lizenz](#lizenz)
 
 ## Projektübersicht
 
@@ -36,8 +35,6 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 * **Live-Suche:** AJAX-basierte Echtzeit-Filterung nach Datum und Sensortyp ohne Neuladen.
 
-* **Open Source:** Entwicklung mit frei verfügbaren Technologien (PHP, JavaScript, SQL).
-
 ## Funktionsanforderungen
 
 1. **Dateneingabe**
@@ -48,12 +45,13 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 2. **Datenverarbeitung & -speicherung**
 
-   * Verwendung von Prepared Statements für sichere SQL-Abfragen
-   * Speichern der Daten in Tabelle `sensordaten`
+   * Speichern der Daten in Tabelle `sensordaten` 
+   * SensorRepository für die Verwaltung der Daten
 
 3. **Datenanzeige**
 
-   * Sortierbare und paginierte HTML-Tabelle aller Sensordaten
+   * Sortierbare HTML-Tabelle aller Sensordaten
+   * ![image](https://github.com/user-attachments/assets/f4c8d498-bbd4-4398-b491-5efd319c05ef)
 
 4. **AJAX-Live-Suche**
 
@@ -64,23 +62,19 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 * **Usability:** Intuitive Oberfläche, responsives Design für Desktop und Mobilgeräte
 * **Performance:** Antwortzeit < 1 Sekunde bei Filteranfragen, skalierbar für bis zu 500 Einträge
-* **Sicherheit:** Serverseitige Validierung, Prepared Statements, HTTPS-Unterstützung
-* **Datenschutz:** Verarbeitung nur technischer, anonymisierter Daten
+* **Sicherheit:** Serverseitige Validierung, Prepared Statements
 * **Erweiterbarkeit:** Modularer Code für einfache Integration neuer Sensoren und Funktionen
 
 ## Technologie-Stack
 
-* **Backend:** PHP 7.4+
-* **Frontend:** HTML5, CSS3, JavaScript (Fetch API)
-* **Datenbank:** MySQL 5.7+
-* **Tools:** Composer, optional npm/Yarn für Frontend-Dependencies
+* **Backend:** PHP
+* **Frontend:** HTML, CSS, JavaScript
+* **Datenbank:** MySQL
 
 ## Ausblick & Erweiterungen
 
-* **Automatische Sensoranbindung:** Integration per MQTT oder REST
-* **Visualisierung:** Chart.js oder Recharts für Diagramme und Trends
+* **Automatische Sensoranbindung:** Integration REST
 * **Benachrichtigungen:** E-Mail- oder Push-Alerts bei Grenzwertüberschreitungen
-* **Authentifizierung:** Nutzerverwaltung und personalisierte Dashboards
 
 ## Nächste Schritte
 
