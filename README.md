@@ -4,7 +4,7 @@
 
 ## Projektvision
 
-Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherung und Visualisierung von Sensordaten (z. B. Temperatur und Luftfeuchtigkeit). Ziel ist es, ein kompaktes Smart-Home-Dashboard zu simulieren, das typische IoT-Komponenten integriert und Studierenden einen praxisnahen Einblick in den gesamten Webentwicklungsprozess bietet.
+Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherung und Visualisierung von Sensordaten (z. B. Temperatur und Luftfeuchtigkeit). Ziel ist es, ein kompaktes Smart-Home-Dashboard zu simulieren, das typische IoT-Komponenten integriert.
 
 ## Inhaltsverzeichnis
 
