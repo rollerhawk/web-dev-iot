@@ -9,7 +9,7 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 ## Inhaltsverzeichnis
 
 1. [Projektübersicht](#projektübersicht)
-2. [Projektübersicht](#mockup)
+2. [Mockup](#mockup)
 3. [Funktionsanforderungen](#funktionsanforderungen)
 4. [Nicht-funktionale Anforderungen](#nicht-funktionale-anforderungen)
 5. [Technologie-Stack](#technologie-stack)
