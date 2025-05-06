@@ -24,7 +24,7 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
   ```sql
   CREATE TABLE sensordaten (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     wert FLOAT NOT NULL,
     einheit VARCHAR(10) NOT NULL,
     typ VARCHAR(20) NOT NULL,
