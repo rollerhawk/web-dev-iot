@@ -85,4 +85,3 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 2. Datenbankschema importieren
 3. Grundfunktionen (Erfassung, Speicherung, Anzeige) implementieren
 4. AJAX-Live-Suche integrieren
-5. Prototyp dem Professor präsentieren
