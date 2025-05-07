@@ -43,7 +43,7 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 ## Roadmap
 ![image](https://github.com/user-attachments/assets/ec260d5a-2bca-4f29-a69c-bc4e1bb09040)
 
-## Funktionsanforderungen
+## Funktionsanforderungen (MUSS)
 
 1. **Dateneingabe**
 
@@ -53,7 +53,7 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 2. **Datenverarbeitung & -speicherung**
 
-   * Speichern der Daten in Tabelle `sensordaten` 
+   * Speichern der Daten in Tabelle `sensordaten`
    * SensorRepository für die Verwaltung der Daten
 
 3. **Datenanzeige**
@@ -67,10 +67,10 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 ## Nicht-funktionale Anforderungen
 
-* **Usability:** Intuitive Oberfläche, responsives Design für Desktop und Mobilgeräte
-* **Performance:** Antwortzeit < 1 Sekunde bei Filteranfragen, skalierbar für bis zu 500 Einträge
-* **Sicherheit:** Serverseitige Validierung, Prepared Statements
-* **Erweiterbarkeit:** Modularer Code für einfache Integration neuer Sensoren und Funktionen
+* **Usability:** Intuitive Oberfläche (SOLL), responsives Design für Desktop (SOLL) und Mobilgeräte (KANN)
+* **Performance:** Antwortzeit < 1 Sekunde bei Filteranfragen (KANN)
+* **Sicherheit:** Serverseitige Validierung (MUSS), Prepared Statements (SOLL)
+* **Erweiterbarkeit:** Modularer Code für einfache Integration neuer Sensoren und Funktionen (SOLL)
 
 ## Technologie-Stack
 
