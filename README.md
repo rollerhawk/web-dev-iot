@@ -21,7 +21,7 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 * **Manuelle Datenerfassung:** Über ein Webformular werden simulierte Sensordaten (Temperatur, Luftfeuchtigkeit, Sensortyp, Zeitstempel) erfasst.
   
-* **Architektur:** CRUD für Datenverwaltung, Dependency Injection für Backend für die erwartbarkeit.
+* **Architektur:** CRUD (CREATE, READ, UPDATE, DELETE) für Datenverwaltung, Dependency Injection für Backend für die erwartbarkeit.
 
 * **Datenhaltung:** MySQL-Datenbank mit Tabelle `sensordaten`:
 
