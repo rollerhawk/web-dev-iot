@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- Metadaten & Responsivität -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sensor-Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  >
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <!-- Überschrift -->
+    <h1 class="text-center mb-5">Sensor-Dashboard</h1>
+
+    <!-- 1) Sensor-Karten (responsive grid) -->
+    <section id="sensor-cards-section" class="mb-5">
+      <h2 class="h4 mb-3">Sensor-Übersicht</h2>
+      <div
+        id="sensor-cards"
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+      >
+        <!-- JS füllt hier die Karten als <div class="col">…</div> -->
+      </div>
+    </section>
+
+    <!-- 2) Sensordaten erfassen (immer volle Breite) -->
+    <section id="data-entry-section" class="mb-5">
+      <h2 class="h4 mb-3">Sensordaten erfassen</h2>
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <form id="data-form" class="row g-3">
+            <!-- Sensortyp -->
+            <div class="col-12">
+              <label for="sensor_type" class="form-label">Sensortyp</label>
+              <input
+                type="text"
+                id="sensor_type"
+                name="sensor_type"
+                class="form-control"
+                placeholder="z. B. Temperatur"
+                required
+              >
+            </div>
+            <!-- Temperatur -->
+            <div class="col-md-6">
+              <label for="temperature" class="form-label">Temperatur (°C)</label>
+              <input
+                type="number"
+                step="0.01"
+                id="temperature"
+                name="temperature"
+                class="form-control"
+                placeholder="z. B. 21.5"
+                required
+              >
+            </div>
+            <!-- Luftfeuchte -->
+            <div class="col-md-6">
+              <label for="humidity" class="form-label">Luftfeuchte (%)</label>
+              <input
+                type="number"
+                step="0.01"
+                id="humidity"
+                name="humidity"
+                class="form-control"
+                placeholder="z. B. 45.0"
+                required
+              >
+            </div>
+            <!-- Zeitstempel -->
+            <div class="col-12">
+              <label for="timestamp" class="form-label">Zeitstempel</label>
+              <input
+                type="datetime-local"
+                id="timestamp"
+                name="timestamp"
+                class="form-control"
+                required
+              >
+            </div>
+            <!-- Absenden -->
+            <div class="col-12 text-end">
+              <button type="submit" class="btn btn-success">
+                Daten absenden
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) Live-Suche & Tabelle (volle Breite) -->
+    <section id="data-table-section">
+      <h2 class="h4 mb-3">Alle Sensordaten</h2>
+      <!-- Live-Suche -->
+      <div class="mb-3">
+        <label for="search" class="form-label">Live-Suche</label>
+        <input
+          type="text"
+          id="search"
+          class="form-control"
+          placeholder="z. B. Typ oder ID"
+        >
+      </div>
+      <!-- Tabelle -->
+      <div class="table-responsive">
+        <div id="data-table"><!-- JS setzt hier die <table> rein --></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Deine App-Logik -->
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
