@@ -18,6 +18,7 @@ class SensorDataController extends Controller
             // fetch the Sensor to get its type
             $sensor = $this->sensorRepo->find($sd->getSensorId());
             $row['sensor_type'] = $sensor ? $sensor->getType() : '';
+            $row['unit'] = $sensor ? $sensor->getUnit() : '';
             $out[] = $row;
         }
     
@@ -48,8 +49,8 @@ class SensorDataController extends Controller
         $sd = new SensorData();
         $sd->fill([
           'sensor_id'=>$sensor->getId(),
-          'temperature'=>$in['temperature'],
-          'humidity'=>$in['humidity'],
+          'measurement'=>$in['measurement'],
+          'unit'=>$in['unit'],
           'timestamp'=>$in['timestamp']
         ]);
 

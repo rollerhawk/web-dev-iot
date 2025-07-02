@@ -45,14 +45,14 @@ class SensorDataRepository implements RepositoryInterface
         $a = $sd->toArray();
         if ($a['id']) {
             $stmt = $this->db->prepare(
-              'UPDATE sensordata SET sensor_id=?,temperature=?,humidity=?,timestamp=? WHERE id=?'
+              'UPDATE sensordata SET sensor_id=?,measurement=?,timestamp=? WHERE id=?'
             );
-            return $stmt->execute([$a['sensor_id'],$a['temperature'],$a['humidity'],$a['timestamp'],$a['id']]);
+            return $stmt->execute([$a['sensor_id'],$a['measurement'],$a['timestamp'],$a['id']]);
         }
         $stmt = $this->db->prepare(
-          'INSERT INTO sensordata (sensor_id,temperature,humidity,timestamp) VALUES(?,?,?,?)'
+          'INSERT INTO sensordata (sensor_id,measurement,timestamp) VALUES(?,?,?)'
         );
-        $ok = $stmt->execute([$a['sensor_id'],$a['temperature'],$a['humidity'],$a['timestamp']]);
+        $ok = $stmt->execute([$a['sensor_id'],$a['measurement'],$a['timestamp']]);
         if ($ok) $sd->fill(array_merge($a,['id'=>$this->db->lastInsertId()]));
         return $ok;
     }
@@ -67,6 +67,21 @@ class SensorDataRepository implements RepositoryInterface
     {
         $stmt = $this->db->prepare('DELETE FROM sensordata WHERE sensor_id=?');
         return $stmt->execute([$sensorId]);
+    }
+
+    public function findSinceId(int $lastId): array
+    {
+        $stmt = $this->db->prepare(
+        'SELECT * FROM sensordata WHERE id > ? ORDER BY id ASC'
+        );
+        $stmt->execute([$lastId]);
+        $out = [];
+        while ($row = $stmt->fetch()) {
+            $sd = new SensorData(); 
+            $sd->fill($row);
+            $out[] = $sd;
+        }
+        return $out;
     }
 }
 ?>

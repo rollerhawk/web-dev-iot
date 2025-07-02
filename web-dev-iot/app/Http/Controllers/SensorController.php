@@ -24,12 +24,10 @@ class SensorController extends Controller
             $latest = $this->dataRepo->findLatestBySensor($sensor->getId());
             if ($latest) {
                 $ld = $latest->toArray();
-                $row['last_temperature'] = $ld['temperature'];
-                $row['last_humidity']    = $ld['humidity'];
+                $row['last_measurement'] = $ld['measurement'];
                 $row['last_timestamp']   = $ld['timestamp'];
             } else {
-                $row['last_temperature'] = null;
-                $row['last_humidity']    = null;
+                $row['last_measurement'] = null;
                 $row['last_timestamp']   = null;
             }
 
@@ -48,6 +46,56 @@ class SensorController extends Controller
         } else {
             http_response_code(500);
             echo json_encode(['error'=>'Löschen fehlgeschlagen']);
+        }
+    }
+
+    /**
+     * POST /api/sensors
+     * Legt einen neuen Sensor an, falls noch nicht vorhanden.
+     */
+    public function store(): void
+    {
+        // Nur POST erlauben
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            echo json_encode(['error'=>'Methode nicht erlaubt']);
+            return;
+        }
+
+        // JSON einlesen
+        $input = json_decode(file_get_contents('php://input'), true);
+        $type  = trim($input['type'] ?? '');        
+        $unit = trim($input['unit'] ?? '');
+
+        // Validierung
+        if ($type === '') {
+            http_response_code(422);
+            echo json_encode(['error'=>'Sensortyp ist erforderlich']);
+            return;
+        }
+
+        // Prüfen, ob ein Sensor mit diesem Typ bereits existiert
+        $existing = $this->sensorRepo->findByType($type);
+        if ($existing) {
+            http_response_code(409);
+            echo json_encode(['error'=>'Sensor existiert bereits']);
+            return;
+        }
+
+        // Neuen Sensor anlegen
+        $sensor = new Sensor();
+        $sensor->fill([
+            'name' => $type,
+            'type' => $type,
+            'unit' => $unit
+        ]);
+
+        if ($this->sensorRepo->save($sensor)) {
+            http_response_code(201);
+            echo json_encode($sensor->toArray());
+        } else {
+            http_response_code(500);
+            echo json_encode(['error'=>'Anlegen fehlgeschlagen']);
         }
     }
 }

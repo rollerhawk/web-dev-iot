@@ -31,8 +31,8 @@ export class SensorTable {
       { key: 'id',           label: 'ID' },
       { key: 'sensor_id',    label: 'Sensor-ID' },
       { key: 'sensor_type',  label: 'Sensortyp' },
-      { key: 'temperature',  label: 'Temperatur (°C)' },
-      { key: 'humidity',     label: 'Luftfeuchte (%)' },
+      { key: 'measurement',  label: 'Messung' },
+      { key: 'unit',  label: 'Einheit' },
       { key: 'timestamp',    label: 'Zeitstempel' }
     ];
 

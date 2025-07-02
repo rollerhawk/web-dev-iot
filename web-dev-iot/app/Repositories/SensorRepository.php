@@ -25,12 +25,12 @@ class SensorRepository implements RepositoryInterface
     public function save($sensor): bool
     {
         if ($sensor->getId()) {
-            $stmt = $this->db->prepare('UPDATE sensors SET name=?,type=? WHERE id=?');
+            $stmt = $this->db->prepare('UPDATE sensors SET name=?,type=?,unit=? WHERE id=?');
             return $stmt->execute([$sensor->getName(),$sensor->getType(),$sensor->getId()]);
         }
-        $stmt = $this->db->prepare('INSERT INTO sensors (name,type) VALUES (?,?)');
-        $ok = $stmt->execute([$sensor->getName(),$sensor->getType()]);
-        if ($ok) $sensor->fill(['id'=>$this->db->lastInsertId(),'name'=>$sensor->getName(),'type'=>$sensor->getType()]);
+        $stmt = $this->db->prepare('INSERT INTO sensors (name,type,unit) VALUES (?,?,?)');
+        $ok = $stmt->execute([$sensor->getName(),$sensor->getType(),$sensor->getUnit()]);
+        if ($ok) $sensor->fill(['id'=>$this->db->lastInsertId(),'name'=>$sensor->getName(),'type'=>$sensor->getType(),'unit'=>$sensor->getUnit()]);
         return $ok;
     }
 
