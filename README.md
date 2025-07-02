@@ -79,7 +79,7 @@ Das **Mini-IoT-Portal** ist eine webbasierte Anwendung zur Erfassung, Speicherun
 
 ## Technologie-Stack
 
-* **Backend:** PHP (geht Java+Springboot auch?)
+* **Backend:** PHP
 * **Frontend:** HTML, CSS, JavaScript
 * **Datenbank:** MySQL
 
