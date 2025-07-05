@@ -2,6 +2,7 @@
 import { SensorCard } from './SensorCard.js';
 import { SensorTable } from './SensorTable.js';
 
+//Konstanten und Variablen
 const cardsEl  = document.getElementById('sensor-cards');
 const form     = document.getElementById('data-form');
 const search   = document.getElementById('search');
@@ -10,6 +11,7 @@ const newModalEl    = document.getElementById('newSensorModal');
 const newModal      = new bootstrap.Modal(newModalEl);
 let tableInstance;
 
+//Funktion zur Erstellung einer neuen Sensorenkarte
 function createNewSensorCard() {
   const col = document.createElement('div');
   col.className = 'col-6 col-md-4 col-lg-3';
@@ -26,6 +28,7 @@ function createNewSensorCard() {
   return col;
 }
 
+//Event nach dem die Sensorendaten in der Form abgeschickt werden
 newSensorForm.addEventListener('submit', async e => {
   e.preventDefault();
   const fd   = new FormData(newSensorForm);
@@ -41,6 +44,7 @@ newSensorForm.addEventListener('submit', async e => {
     newModal.hide();
     await loadSensors();
     await loadData();
+    await fillTimestamp();
   } else {
     const err = await res.json().catch(()=>({}));
     alert('Fehler: ' + (err.error||res.status));
@@ -48,7 +52,7 @@ newSensorForm.addEventListener('submit', async e => {
 });
 
 
-// 2) Angepasste loadSensors()
+// Funktion zum Laden der Sensoren und dessen Rendering
 export async function loadSensors() {
   const res = await fetch('/api/sensors');
   const sensors = await res.json();
@@ -65,8 +69,22 @@ export async function loadSensors() {
   sensors.forEach(s => {
     cardsEl.appendChild(new SensorCard(s).render());
   });
+
+  // Zusätzlich: Dropdown-Liste befüllen
+  const selectEl = document.getElementById('sensor_type');
+  if (selectEl) {
+    selectEl.innerHTML = '<option value="">Bitte Sensor auswählen</option>';
+    sensors.forEach(s => {
+      const option = document.createElement('option');
+      option.value = s.type; // passt an dein Sensor-Objekt an
+      option.textContent = s.type;
+      selectEl.appendChild(option);
+    });
+  }
+  fillTimestamp();
 }
 
+// Funktion zum Laden der Sensorendaten und Rendering
 async function loadData() {
   const res = await fetch('/api/sensordata');
   const data = await res.json();
@@ -74,10 +92,21 @@ async function loadData() {
   tableInstance.render();
 }
 
+//Funktion zum vorbelegen des Zeitstempels
+export async function fillTimestamp(){
+    const now = new Date();
+  const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+    .toISOString()
+    .slice(0,16);
+  document.getElementById('timestamp').value = local;
+}
+
+//Event, wenn Seite vollständig geladen wurde und mit der gearbeitet werden kann
 document.addEventListener('DOMContentLoaded', async () => {
-  // 2) Expose them _after_ they exist
   window.loadSensors = loadSensors;
   window.loadData    = loadData;
+  window.fillTimestamp = fillTimestamp;
+
 
   form.onsubmit = async e => {
     e.preventDefault();
@@ -111,6 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Initial load
   await loadSensors();
   await loadData();
+  await fillTimestamp();
 
   const es = new EventSource('/public/events.php');
 
@@ -118,7 +148,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // e.lastEventId enthält die ID des letzten Datensatzes
     const sd = JSON.parse(e.data);
 
-    // 1) Du hast tableInstance.data als Array von Objekten mit id-Feld
     const exists = tableInstance.data.some(r => r.id === sd.id);
     if (!exists) {
       // nur neu hinzufügen, wenn noch nicht vorhanden
@@ -126,7 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       tableInstance.render();
     }
 
-    // 2) In SensorCard updaten (falls du letzte Messung anzeigen willst)
+    // In SensorCard updaten (falls du letzte Messung anzeigen willst)
     const card = document.querySelector(`.sensor-card[data-id="${sd.sensor_id}"]`);
     if (card) {
       const measEl = card.querySelector('.measurement');
@@ -134,7 +163,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       measEl.textContent = sd.measurement;
       tsEl.textContent   = new Date(sd.timestamp)
         .toLocaleString('de-DE',{ dateStyle:'short', timeStyle:'short' });
-        // JS-Animation: grüner Schatten, der in 1,5s ausfadet
       card.animate([
         { boxShadow: '0 0 12px rgba(0,255,0,0.8)' },
         { boxShadow: '0 0   0px rgba(0,255,0,0)' }

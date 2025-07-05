@@ -70,14 +70,10 @@
             <!-- Sensortyp -->
             <div class="col-12">
               <label for="sensor_type" class="form-label">Sensor</label>
-              <input
-                type="text"
-                id="sensor_type"
-                name="sensor_type"
-                class="form-control"
-                placeholder="z. B. Küche"
-                required
-              >
+              <select id="sensor_type" name="sensor_type" class="form-select" required>
+                <option value="">Bitte Sensor auswählen</option>
+                <!-- Optionen werden hier via JS eingefügt -->
+              </select>
             </div>
             <!-- Messung -->
             <div class="col-md-6">
